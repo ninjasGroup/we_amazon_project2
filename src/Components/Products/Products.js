@@ -1,9 +1,18 @@
 import React from 'react'
+import './Products.css';
+
+
+// Redux
+import { useDispatch, useSelector } from 'react-redux';
 
 function Products({products}) {
 
+    const cart = useSelector(state => state);
+    const dispatch = useDispatch();
+
     // let something = products.slice(0, 8);
   let allproducts =   products.map((items)=>{
+    items.quantity = 1;
         return(
             <div className="box__product">
           
@@ -16,7 +25,8 @@ function Products({products}) {
                 </div>
                 
                 <div className="box__product_link">
-                    <a href="">Shop now</a>
+                    {/* <a href="">Shop now</a> */}
+                    <button onClick={()=>dispatch({ type: "addtocart", payload: items })} className='products__addto_cart'>Add to Cart</button>
                 </div>
                 
         </div>

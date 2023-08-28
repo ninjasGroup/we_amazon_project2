@@ -1,8 +1,12 @@
 import React from 'react'
 import './Navbar.css';
 import { Link } from 'react-router-dom';
+import {  useSelector } from 'react-redux';
 
 function Navbar() {
+
+    const cart = useSelector(state => state);
+
   return (
     <nav>
         <div className="navbar">
@@ -86,7 +90,7 @@ function Navbar() {
                 <div className="cart__top">
                       
                     <i className='cart__icon'>
-                        <span className='cart__icon_count'>2</span>
+                        <span className='cart__icon_count'>{cart.length}</span>
                     </i>
 
                 </div>
